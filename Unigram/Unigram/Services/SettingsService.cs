@@ -40,7 +40,6 @@ namespace Unigram.Services
         bool UseThreeLinesLayout { get; set; }
         bool CollapseArchivedChats { get; set; }
         bool IsAdaptiveWideEnabled { get; set; }
-        bool IsTrayVisible { get; set; }
         bool IsLaunchMinimized { get; set; }
         bool IsSendByEnterEnabled { get; set; }
         bool IsTextFormattingVisible { get; set; }
@@ -458,23 +457,6 @@ namespace Unigram.Services
             }
         }
 
-        private static bool? _isTrayVisible;
-        public bool IsTrayVisible
-        {
-            get
-            {
-                if (_isTrayVisible == null)
-                    _isTrayVisible = GetValueOrDefault(_local, "IsTrayVisible", true);
-
-                return _isTrayVisible ?? true;
-            }
-            set
-            {
-                _isTrayVisible = value;
-                AddOrUpdateValue(_local, "IsTrayVisible", value);
-            }
-        }
-
         private static bool? _isLaunchMinimized;
         public bool IsLaunchMinimized
         {
@@ -488,7 +470,7 @@ namespace Unigram.Services
             set
             {
                 _isLaunchMinimized = value;
-                AddOrUpdateValue(_local, "IsTrayVisible", value);
+                AddOrUpdateValue(_local, "IsLaunchMinimized", value);
             }
         }
 

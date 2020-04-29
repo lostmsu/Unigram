@@ -42,23 +42,5 @@ namespace Unigram.ViewModels.Settings
                 RaisePropertyChanged();
             }
         }
-
-        public bool IsTrayVisible
-        {
-            get { return Settings.IsTrayVisible; }
-            set
-            {
-                if (Settings.IsTrayVisible != value)
-                {
-                    Settings.IsTrayVisible = value;
-                    RaisePropertyChanged();
-
-                    if (App.Connection != null)
-                    {
-                        App.Connection.SendMessageAsync(new Windows.Foundation.Collections.ValueSet { { "IsTrayVisible", value } });
-                    }
-                }
-            }
-        }
     }
 }
